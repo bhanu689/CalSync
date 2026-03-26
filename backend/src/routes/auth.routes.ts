@@ -32,7 +32,7 @@ router.get(
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
       secure: env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      sameSite: env.NODE_ENV === 'production' ? 'none' as const : 'strict' as const,
       maxAge: 7 * 24 * 60 * 60 * 1000,
       path: '/',
     });
