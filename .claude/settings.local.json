@@ -10,7 +10,8 @@
       "Bash(npx tsc:*)",
       "Bash(npx next:*)",
       "Bash(npm ls:*)",
-      "Bash(chmod:*)"
+      "Bash(chmod:*)",
+      "WebSearch"
     ]
   }
 }
