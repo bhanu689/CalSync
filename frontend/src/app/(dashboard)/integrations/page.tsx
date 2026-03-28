@@ -8,6 +8,7 @@ import { Check, ExternalLink } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
+import { useAuthStore } from '@/stores/authStore';
 
 interface CalendarIntegration {
   _id: string;
@@ -51,11 +52,13 @@ export default function IntegrationsPage() {
   const outlookConnected = data?.find((i) => i.provider === 'outlook');
 
   const connectGoogle = () => {
-    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/calendars/google/connect`;
+    const token = useAuthStore.getState().accessToken;
+    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/calendars/google/connect?token=${token}`;
   };
 
   const connectOutlook = () => {
-    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/calendars/outlook/connect`;
+    const token = useAuthStore.getState().accessToken;
+    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/calendars/outlook/connect?token=${token}`;
   };
 
   const getAppleIcsUrl = () => {
